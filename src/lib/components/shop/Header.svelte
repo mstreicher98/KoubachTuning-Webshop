@@ -84,7 +84,7 @@
 		<button type="button" class="icon-btn only-mobile" aria-label={i.tr('Menü öffnen', 'Open menu')} onclick={() => (drawer = true)}><Menu size={24} /></button>
 
 		<a href={i.href('/')} class="logo" aria-label="Koubach Tuning – {i.tr('Startseite', 'Home')}">
-			<img src="/bilder/logo.webp" alt="" width="640" height="145" />
+			<img src="/bilder/logo.svg" alt="" width="262" height="64" />
 		</a>
 
 		<nav class="nav only-desktop" aria-label={i.tr('Hauptmenü', 'Main menu')}>
@@ -133,7 +133,7 @@
 	<div class="scrim" onclick={() => (drawer = false)} aria-hidden="true" out:fade={{ duration: dur(220) }}></div>
 	<div class="drawer zone-dark" role="dialog" out:fly={{ x: -380, duration: dur(260), easing: cubicIn, opacity: 1 }} aria-modal="true" aria-label={i.tr('Menü', 'Menu')}>
 		<div class="drawer-head">
-			<img src="/bilder/logo.webp" alt="Koubach Tuning" width="640" height="145" />
+			<img src="/bilder/logo.svg" alt="Koubach Tuning" width="262" height="64" />
 			<!-- svelte-ignore a11y_autofocus -->
 			<button type="button" class="icon-btn" aria-label={i.tr('Menü schließen', 'Close menu')} onclick={() => (drawer = false)} autofocus><X size={24} /></button>
 		</div>
@@ -215,7 +215,7 @@
 		opacity: 0.8;
 	}
 	.logo img {
-		height: 2.1rem;
+		height: 2.35rem;
 		width: auto;
 	}
 	@media (max-width: 1023px) {
@@ -227,7 +227,7 @@
 	}
 	@media (min-width: 1024px) {
 		.logo img {
-			height: 2.6rem;
+			height: 2.9rem;
 		}
 	}
 	.nav {
@@ -435,7 +435,7 @@
 		margin-bottom: 1rem;
 	}
 	.drawer-head img {
-		height: 1.9rem;
+		height: 2.2rem;
 		width: auto;
 	}
 	.drawer-search {

@@ -68,7 +68,7 @@
 				{#if preview}
 					<Picture media={preview} sizes="32rem" want={800} alt="" />
 				{:else}
-					<span class="ph"><img src="/bilder/helm.png" alt="" width="240" height="240" /></span>
+					<span class="ph"><img src="/bilder/zeichen.svg" alt="" width="240" height="240" /></span>
 				{/if}
 			</span>
 		{/key}

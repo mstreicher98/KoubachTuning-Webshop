@@ -5,7 +5,7 @@
 <div class="auth">
 	<div class="box">
 		<div class="brand">
-			<span class="logo"><img src="/bilder/logo.webp" alt="Koubach Tuning" width="640" height="145" /></span>
+			<span class="logo"><img src="/bilder/zeichen.svg" alt="Koubach Tuning" width="64" height="64" /></span>
 			<span class="big">Interner Bereich</span>
 		</div>
 		{@render children()}
@@ -51,11 +51,10 @@
 	.logo {
 		display: grid;
 		place-items: center;
-		width: 4.2rem;
+		width: 2.9rem;
 		height: 2.9rem;
-		padding: 0.45rem;
 		border-radius: 8px;
-		background: #000;
+		overflow: hidden;
 	}
 	.logo img {
 		width: 100%;

@@ -99,7 +99,7 @@
 
 {#snippet brand(small = false)}
 	<a href="/admin" class="brand" class:small-brand={small}>
-		<span class="logo"><img src="/bilder/helm.png" alt="" width="120" height="120" /></span>
+		<span class="logo"><img src="/bilder/zeichen.svg" alt="" width="120" height="120" /></span>
 		<span>
 			{#if !small}<span class="b-small">Koubach Tuning</span>{/if}
 			<span class="b-big">Intern</span>
@@ -222,9 +222,8 @@
 		place-items: center;
 		width: 2.6rem;
 		height: 2.6rem;
-		padding: 0.3rem;
 		border-radius: 7px;
-		background: #000;
+		overflow: hidden;
 		flex-shrink: 0;
 	}
 	.small-brand .logo {

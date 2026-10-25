@@ -8,7 +8,7 @@
 <svelte:head><title>{page.status === 404 ? (en ? 'Not found' : 'Nicht gefunden') : en ? 'Error' : 'Fehler'} | Koubach Tuning</title></svelte:head>
 
 <main class="err">
-	<img src="/bilder/logo.webp" alt="Koubach Tuning" width="640" height="145" />
+	<img src="/bilder/logo.svg" alt="Koubach Tuning" width="262" height="64" />
 	<p class="code">{page.status}</p>
 	<h1>{page.error?.message ?? (en ? 'Something went wrong.' : 'Da ist etwas schiefgelaufen.')}</h1>
 	<a href={en ? '/en' : '/'}>{en ? 'Back to the shop' : 'Zurück zum Shop'}</a>

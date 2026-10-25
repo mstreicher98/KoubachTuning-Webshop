@@ -15,7 +15,7 @@
 			<Picture media={p.image} sizes="(min-width: 1024px) 25vw, 50vw" want={800} alt="" {eager} />
 			{#if p.image2}<span class="img2"><Picture media={p.image2} sizes="(min-width: 1024px) 25vw, 50vw" want={800} alt="" /></span>{/if}
 		{:else}
-			<span class="ph" aria-hidden="true"><img src="/bilder/helm.png" alt="" width="120" height="120" loading="lazy" /></span>
+			<span class="ph" aria-hidden="true"><img src="/bilder/zeichen.svg" alt="" width="120" height="120" loading="lazy" /></span>
 		{/if}
 		<span class="tags">
 			{#if p.soldOut}<span class="badge badge-dark">{i.tr('Ausverkauft', 'Sold out')}</span>{/if}

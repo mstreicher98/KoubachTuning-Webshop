@@ -119,7 +119,7 @@
 						</div>
 					{/key}
 				{:else}
-					<span class="ph" aria-hidden="true"><img src="/bilder/helm.png" alt="" width="200" height="200" /></span>
+					<span class="ph" aria-hidden="true"><img src="/bilder/zeichen.svg" alt="" width="200" height="200" /></span>
 				{/if}
 			</div>
 			{#if data.images.length > 1}

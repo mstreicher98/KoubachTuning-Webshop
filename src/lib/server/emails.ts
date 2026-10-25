@@ -25,7 +25,7 @@ function layout(s: ShopSettings, locale: Locale, heading: string, blocks: Block[
 <body style="margin:0;padding:0;background:#e4e4e7;font-family:Helvetica,Arial,sans-serif;color:#18181b">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#e4e4e7;padding:24px 12px"><tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff">
-<tr><td style="background:#000000;padding:22px 28px" align="left"><img src="${shopBase()}/bilder/logo-mail.png" width="200" height="48" alt="${esc(c.brand)}" style="display:block;border:0"></td></tr>
+<tr><td style="background:#121316;padding:22px 28px" align="left"><img src="${shopBase()}/bilder/logo-mail.png" width="200" height="49" alt="${esc(c.brand)}" style="display:block;border:0"></td></tr>
 <tr><td style="height:4px;line-height:4px;font-size:0;background:#e52521;background-image:linear-gradient(90deg,#e52521,#9e0b0f)">&nbsp;</td></tr>
 <tr><td style="padding:30px 28px 8px"><h1 style="margin:0 0 18px;font-size:24px;line-height:1.2;font-weight:800;text-transform:uppercase;letter-spacing:.01em">${esc(heading)}</h1>
 ${blocks.map((b) => b.html).join('\n')}

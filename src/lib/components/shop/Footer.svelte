@@ -38,7 +38,7 @@
 	<span class="rwr" aria-hidden="true"></span>
 	<div class="wrap grid">
 		<div class="brand">
-			<img src="/bilder/logo.webp" alt={company.brand} width="640" height="145" />
+			<img src="/bilder/logo.svg" alt={company.brand} width="262" height="64" />
 			<p class="muted small">{i.tr('Teile, Reifen und Fahrzeuge für Moped und Motorrad – aus Hollabrunn, mit Versand nach Österreich und Deutschland.', 'Parts, tyres and vehicles for mopeds and motorcycles – from Hollabrunn, shipping to Austria and Germany.')}</p>
 		</div>
 		<nav aria-label={i.tr('Bestellung', 'Ordering')}>
