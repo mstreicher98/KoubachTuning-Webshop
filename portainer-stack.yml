@@ -1,0 +1,57 @@
+# Koubach Tuning – Webshop und interner Bereich
+# Stack für Portainer mit Cloudflare Tunnel (kein offener Port, HTTPS macht Cloudflare)
+#
+# Portainer → Stacks → Add stack → Web editor: diesen Inhalt einfügen und unten bei
+# „Environment variables“ setzen:
+#   SHOP_URL                https://koubach.astronox.dev        (später die echte Shop-Domain)
+#   ADMIN_URL               https://koubachadmin.astronox.dev   (später z. B. https://admin.<domain>)
+#   TUNNEL_TOKEN            Token des Cloudflare-Tunnels (siehe unten)
+#   APP_SECRET              langer Zufallswert, verschlüsselt Stripe/PayPal/SMTP-Zugangsdaten
+#                           (z. B. mit „openssl rand -base64 32“ erzeugen, gut aufbewahren)
+#   INITIAL_ADMIN_USERNAME  optional, Standard „admin“
+#   INITIAL_ADMIN_EMAIL     optional, Standard office@astronox.dev (bekommt Bestell-Mails)
+#   INITIAL_ADMIN_PASSWORD  optional – leer lassen: wird erzeugt und einmalig im Log angezeigt
+#
+# Das Image liegt in einem privaten GitHub-Repository: in Portainer unter „Registries“ einmal
+# ghcr.io mit GitHub-Benutzer und einem Token mit dem Recht „read:packages“ hinterlegen.
+#
+# Cloudflare (Dashboard): Networking → Tunnels → „Create a tunnel“ → Typ „Cloudflared“,
+# Namen vergeben, beim Schritt „Install connector“ NUR das lange Token (ab „eyJ…“) als
+# TUNNEL_TOKEN kopieren – installieren nicht nötig, das macht der Dienst „cloudflared“ unten.
+# Danach im Tunnel: Tab „Routes“ → „Add route“ → „Published application“, zweimal:
+#   Subdomain koubach       · Domain astronox.dev · Service URL  http://app:3000
+#   Subdomain koubachadmin  · Domain astronox.dev · Service URL  http://app:3000
+# Der Shop erkennt an der Adresse, ob Shop oder interner Bereich gemeint ist.
+#
+# Neue Version einspielen: Stack → Editor → „Update the stack“ mit „Re-pull image and redeploy“
+# (oder automatisch per Webhook, siehe README).
+
+services:
+  app:
+    image: ghcr.io/mstreicher98/koubachtuning-webshop:latest
+    restart: unless-stopped
+    environment:
+      SHOP_URL: ${SHOP_URL}
+      ADMIN_URL: ${ADMIN_URL}
+      APP_SECRET: ${APP_SECRET:-}
+      # Cloudflare liefert HTTPS und die echte Besucher-IP (für die Sperre bei falschen Passwörtern)
+      PROTOCOL_HEADER: x-forwarded-proto
+      ADDRESS_HEADER: CF-Connecting-IP
+      INITIAL_ADMIN_USERNAME: ${INITIAL_ADMIN_USERNAME:-admin}
+      INITIAL_ADMIN_EMAIL: ${INITIAL_ADMIN_EMAIL:-office@astronox.dev}
+      INITIAL_ADMIN_PASSWORD: ${INITIAL_ADMIN_PASSWORD:-}
+    volumes:
+      # Datenbank, Bilder, Kunden-Dateien und Sicherungen. Beim Entfernen des Stacks das Volume NICHT mitlöschen.
+      - koubach-data:/data
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN}
+    depends_on:
+      - app
+
+volumes:
+  koubach-data:
